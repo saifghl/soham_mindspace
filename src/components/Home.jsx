@@ -7,6 +7,9 @@ import memory4 from "../images/memory-4.png";
 import memory5 from "../images/memory-5.png";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
+import DrProfile from "./DrProfile";
+import OurExpertise from "./Expertise";
+
 function Home() {
     return (
         <>
@@ -27,6 +30,8 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <DrProfile />
+            <OurExpertise />
             <div className="px-[167px] py-[80px]">
                 <div className="flex flex-col">
                     <div className="flex items-end justify-between mb-[48px]">

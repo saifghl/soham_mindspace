@@ -23,7 +23,7 @@ function Navbar() {
                     ))}
                 </div>
                 <div className="flex gap-4">
-                    <div className="text-center align-middle text-[14px] text-black font-semibold border-[1px] border-[#0057B8] rounded-md px-[18px] py-[15px] cursor-pointer">Login</div>
+                    <div className="text-center align-middle text-[14px] text-black font-semibold border-[1px] border-[#0057B8] rounded-md px-[18px] py-[15px] cursor-pointer" onClick={() => navigate('/login')}>Login</div>
                     <div className="text-center align-middle text-[14px] text-white bg-[#0057B8] rounded-md px-[18px] py-[14px] cursor-pointer font-semibold font-inter">Admin Login</div>
                 </div>
             </div>
