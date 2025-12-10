@@ -7,19 +7,23 @@ import Navbar from './components/Navbar';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Gallery from './components/Gallery';
+import Footer from './components/Footer';
+import SignIn from './components/SignIn';
 // import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App bg-white text-black">
+    <div className="App bg-white text-black font-inter ">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<SignIn />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
