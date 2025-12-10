@@ -16,7 +16,7 @@ function Navbar() {
         <>
         <nav>
             <div className="flex justify-between items-center py-[24px] pl-[74px] pr-[167px] gap-2">
-                <div className="text-[32px] text-[#0057B8] font-jaini">soham mindpower</div>
+                <div className="text-[32px] text-[#0057B8] font-jaini">sohaam mindpower</div>
                 <div className="flex gap-[24px]">
                     {navItems.map((item) => (
                         <div onClick={() => handleNavItemClick(item)} key={item.label} className={`text-[16px] font-inter cursor-pointer ${currentPath === item.href ? 'text-[#0057B8]' : 'text-black'}`}>{item.label}</div>
