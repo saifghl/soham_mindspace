@@ -13,16 +13,18 @@ import PatientEnq from './components/admin-panel/PatientEnq';
 import DoctorDashboard from './components/DoctorDashboard';
 import Patients from './components/Patient/Patients';
 import PatientDetails from './components/Patient/PatientDetails';
+import LanguagePreference from './components/Questions/LanguagePreference';
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isDashboardRoute = location.pathname === '/dashboard' || location.pathname === '/patients';
-  const shouldHideNavbarFooter = isAdminRoute || isDashboardRoute;
+  const isQuestionRoute = location.pathname.startsWith('/questions');
+  const shouldHideNavbarFooter = isAdminRoute || isDashboardRoute || isQuestionRoute;
 
   return (
     <div className="App bg-white text-black font-inter ">
-      {!isAdminRoute && <Navbar />}
+      {!shouldHideNavbarFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
@@ -34,8 +36,9 @@ function App() {
         <Route path="/admin/dashboard" element={<DoctorDashboard />} />
         <Route path="/admin/patients" element={<Patients />} />
         <Route path="/admin/patient-details" element={<PatientDetails />} />
+        <Route path="/questions/language-preference" element={<LanguagePreference />} />
       </Routes>
-      {!isAdminRoute && <Footer />}
+      {!shouldHideNavbarFooter && <Footer />}
     </div>
   );
 }
