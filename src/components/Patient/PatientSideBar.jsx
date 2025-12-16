@@ -1,31 +1,26 @@
 import React, { useState } from 'react';
 import {
     LayoutDashboard,
-    Users,
-    FileText,
-    Calendar,
-    FileEdit,
+    User,
+    PlayCircle,
+    Bell,
     CreditCard,
-    Settings,
     LogOut,
     Menu,
     X
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
-const SideBar = () => {
+const PatientSideBar = () => {
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
 
     const menuItems = [
-        { name: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
-        { name: 'Patients', icon: Users, path: '/admin/patients' },
-        { name: 'Reports', icon: FileText, path: '/admin/reports' },
-        { name: 'Appointments', icon: Calendar, path: '/admin/patient-enquiries' },
-        { name: 'Content Management', icon: FileEdit, path: '/admin/add-qa' },
-        { name: 'Payment', icon: CreditCard, path: '/admin/payments' },
-        { name: 'Settings', icon: Settings, path: '/admin/settings' },
-        // { name: 'Inquiries', icon: FileText, path: '/admin/patient-enquiries' },
+        { name: 'Dashboard', icon: LayoutDashboard, path: '/patient/dashboard' },
+        { name: 'My Videos', icon: PlayCircle, path: '/patient/video' },
+        { name: 'Payments', icon: CreditCard, path: '/patient/payments' },
+        { name: 'Notifications', icon: Bell, path: '/patient/notifications' },
+        { name: 'My Profile', icon: User, path: '/patient-profile' }, // Kept original path as per analysis
     ];
 
     const toggleSidebar = () => setIsOpen(!isOpen);
@@ -53,7 +48,7 @@ const SideBar = () => {
                 ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
                 md:translate-x-0`}>
 
-                <div className="p-8 mt-12 md:mt-0"> {/* Margin top on mobile for close button space if needed, or just standard padding */}
+                <div className="p-8 mt-12 md:mt-0">
                     <h1 className="text-xl font-bold text-[#1e40af]">sohaam mindpower</h1>
                 </div>
 
@@ -64,9 +59,9 @@ const SideBar = () => {
                             <Link
                                 key={item.name}
                                 to={item.path}
-                                onClick={() => setIsOpen(false)} // Close on navigate
+                                onClick={() => setIsOpen(false)}
                                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${isActive
-                                    ? 'bg-[#FEF3C7] text-gray-900'
+                                    ? 'bg-[#dbeafe] text-[#1e40af]' /* Blue tint for patient theme */
                                     : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                                     }`}
                             >
@@ -78,14 +73,14 @@ const SideBar = () => {
                 </nav>
 
                 <div className="p-4 mt-auto">
-                    <button className="flex items-center gap-3 px-4 py-3 text-red-500 text-sm font-medium hover:bg-red-50 rounded-lg w-full transition-colors">
+                    <Link to="/" className="flex items-center gap-3 px-4 py-3 text-red-500 text-sm font-medium hover:bg-red-50 rounded-lg w-full transition-colors">
                         <LogOut size={20} />
                         Log Out
-                    </button>
+                    </Link>
                 </div>
             </div>
         </>
     );
 };
 
-export default SideBar;
+export default PatientSideBar;

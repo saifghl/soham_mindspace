@@ -46,11 +46,11 @@ const AddQA = () => {
         <div className="flex bg-gray-50 min-h-screen font-inter add-qa-container">
             <SideBar />
 
-            <div className="flex-1 ml-64 p-8">
+            <div className="flex-1 ml-0 md:ml-64 p-4 md:p-8">
                 {/* Header Section */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 mb-2">Stress & Anxiety Assessment</h1>
-                    <p className="text-gray-600">Manage questions, scoring logic, and test status.</p>
+                    
                 </div>
 
                 {/* Action Buttons */}
@@ -81,16 +81,15 @@ const AddQA = () => {
                             <h3 className="text-lg font-semibold text-gray-900 mb-1">Activate Test</h3>
                             <p className="text-gray-500 text-sm">Make the test available for patients.</p>
                         </div>
-                        <div className="relative inline-block w-14 h-8 align-middle select-none transition duration-200 ease-in">
+                        <div className="toggle-wrapper">
                             <input
                                 type="checkbox"
-                                name="toggle"
                                 id="toggle"
                                 checked={isActive}
                                 onChange={() => setIsActive(!isActive)}
-                                className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer peer checked:right-0 checked:border-[#FCD34D] right-8 border-gray-300 top-1 transition-all duration-300"
+                                className="toggle-checkbox"
                             />
-                            <label htmlFor="toggle" className="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer peer-checked:bg-[#FCD34D] transition-colors duration-300"></label>
+                            <label htmlFor="toggle" className="toggle-label"></label>
                         </div>
                     </div>
 

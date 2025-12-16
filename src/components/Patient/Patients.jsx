@@ -15,10 +15,10 @@ const Patients = () => {
     return (
         <div className="flex bg-gray-50 min-h-screen font-inter">
             <SideBar />
-            <div className="flex-1 ml-64 p-6 lg:p-10 max-w-7xl mx-auto">
+            <div className="flex-1 ml-0 md:ml-64 p-4 md:p-10 max-w-7xl mx-auto w-full">
 
                 {/* Top Actions: Search and Add Button */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                     <div className="relative w-full md:w-96">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <Search size={18} className="text-gray-400" />
@@ -30,18 +30,20 @@ const Patients = () => {
                         />
                     </div>
 
-                    <button className="flex items-center space-x-2 bg-amber-300 hover:bg-amber-400 text-gray-900 px-6 py-2.5 rounded-lg font-medium transition-colors shadow-sm">
+                    <button className="w-full md:w-auto flex items-center justify-center space-x-2 bg-amber-300 hover:bg-amber-400 text-gray-900 px-6 py-2.5 rounded-lg font-medium transition-colors shadow-sm">
                         <PlusCircle size={18} />
                         <span>Add new patients</span>
                     </button>
                 </div>
 
                 {/* Page Title */}
-                <h1 className="text-3xl font-bold text-gray-900 mb-8">Patient Management List</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8">Patient Management List</h1>
 
-                {/* Patients Table Card */}
-                <div className="bg-white rounded-xl mb-8">
-                    <div className="overflow-x-auto">
+                {/* Patients List (Responsive: Cards for Mobile, Table for Desktop) */}
+                <div className="bg-white rounded-xl mb-8 shadow-sm md:shadow-none border md:border-none border-gray-100 p-4 md:p-0">
+
+                    {/* Desktop Table */}
+                    <div className="hidden md:block overflow-x-auto bg-white rounded-xl">
                         <table className="w-full">
                             <thead>
                                 <tr className="border-b border-gray-100">
@@ -73,6 +75,38 @@ const Patients = () => {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+
+                    {/* Mobile Cards */}
+                    <div className="md:hidden space-y-4">
+                        {patients.map((patient) => (
+                            <div key={patient.id} className="bg-gray-50 rounded-lg p-4 flex flex-col gap-3 border border-gray-100">
+                                <div className="flex justify-between items-start">
+                                    <div>
+                                        <span className="font-semibold text-gray-900 block">{patient.name}</span>
+                                        <span className="text-sm text-gray-500">Age: {patient.age}</span>
+                                    </div>
+                                    <div className="flex space-x-2">
+                                        <button className="p-2 bg-white rounded-full text-gray-400 hover:text-blue-600 shadow-sm">
+                                            <Edit size={16} />
+                                        </button>
+                                        <button className="p-2 bg-white rounded-full text-gray-400 hover:text-red-500 shadow-sm">
+                                            <Trash2 size={16} />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-2 gap-2 text-sm pt-2 border-t border-gray-200">
+                                    <div>
+                                        <span className="text-gray-500 block text-xs uppercase tracking-wider">Latest Test</span>
+                                        <span className="font-medium text-gray-700">{patient.latestTest}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-gray-500 block text-xs uppercase tracking-wider">Score</span>
+                                        <span className="font-medium text-gray-700">{patient.score}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
 

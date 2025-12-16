@@ -15,7 +15,7 @@ const DoctorDashboard = () => {
     return (
         <div className="flex bg-gray-50 min-h-screen font-inter">
             <SideBar />
-            <div className="flex-1 ml-64 p-6 lg:p-10 max-w-7xl mx-auto">
+            <div className="flex-1 ml-0 md:ml-64 p-6 lg:p-10 max-w-7xl mx-auto">
                 {/* Header */}
                 <header className="mb-10">
                     <h1 className="text-3xl font-medium text-gray-900">

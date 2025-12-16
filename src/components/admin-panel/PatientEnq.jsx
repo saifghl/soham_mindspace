@@ -19,12 +19,12 @@ const PatientEnq = () => {
         <div className="flex bg-gray-50 min-h-screen font-inter">
             <SideBar />
 
-            <div className="flex-1 ml-64 p-8">
+            <div className="flex-1 ml-0 md:ml-64 p-4 md:p-8">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-8">
                     <div>
                         <h1 className="text-2xl font-bold text-gray-900 mb-1">Patient Inquiries</h1>
-                        <p className="text-gray-600 text-sm">Manage incoming messages and support requests from patients.</p>
+                        
                     </div>
                     <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
                         <img src="https://ui-avatars.com/api/?name=Admin+User" alt="Profile" className="w-full h-full object-cover" />
@@ -41,22 +41,41 @@ const PatientEnq = () => {
                     ))}
                 </div>
 
-                {/* Inquiries Table */}
-                <div className="bg-white rounded-lg shadow-sm p-8 min-h-[500px] flex flex-col relative">
-                    <div className="grid grid-cols-4 text-gray-400 text-sm mb-6 px-4">
+                {/* Inquiries List (Responsive: Cards for Mobile, Table for Desktop) */}
+                <div className="bg-white rounded-lg shadow-sm p-4 md:p-8 min-h-[500px] flex flex-col relative">
+
+                    {/* Desktop Headers */}
+                    <div className="hidden md:grid grid-cols-4 text-gray-400 text-sm mb-6 px-4">
                         <div>Name</div>
                         <div>Status</div>
-                        <div>Dat</div>
-                        <div>Tim</div>
+                        <div>Date</div>
+                        <div>Time</div>
                     </div>
 
-                    <div className="space-y-8">
+                    <div className="space-y-4 md:space-y-8">
                         {inquiries.map((inquiry, index) => (
-                            <div key={index} className="grid grid-cols-4 text-gray-900 px-4 items-center">
-                                <div>{inquiry.name}</div>
-                                <div>{inquiry.status}</div>
-                                <div>{inquiry.date}</div>
-                                <div>{inquiry.time}</div>
+                            <div key={index} className="border md:border-none rounded-lg p-4 md:p-0 grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-0 text-gray-900 md:px-4 items-center bg-gray-50 md:bg-white shadow-sm md:shadow-none">
+                                {/* Mobile Labels & Data */}
+                                <div className="flex justify-between md:block">
+                                    <span className="md:hidden text-gray-500 font-medium">Name:</span>
+                                    <span className="font-semibold md:font-normal">{inquiry.name}</span>
+                                </div>
+                                <div className="flex justify-between md:block">
+                                    <span className="md:hidden text-gray-500 font-medium">Status:</span>
+                                    <span className={`px-2 py-1 rounded-full text-xs font-semibold 
+                                    ${inquiry.status === 'Scheduled' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}
+                                    md:bg-transparent md:text-inherit md:p-0 md:text-base md:font-normal`}>
+                                        {inquiry.status}
+                                    </span>
+                                </div>
+                                <div className="flex justify-between md:block">
+                                    <span className="md:hidden text-gray-500 font-medium">Date:</span>
+                                    <span>{inquiry.date}</span>
+                                </div>
+                                <div className="flex justify-between md:block">
+                                    <span className="md:hidden text-gray-500 font-medium">Time:</span>
+                                    <span>{inquiry.time}</span>
+                                </div>
                             </div>
                         ))}
                     </div>

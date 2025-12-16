@@ -1,191 +1,163 @@
+/* Footer.css */
 :root {
-  --navy: #1e3a8a;
-  /* Deep elegant navy */
-  --navy-dark: #0f172a;
-  --white: #ffffff;
-  --text-muted: rgba(255, 255, 255, 0.7);
-  --accent: #38bdf8;
-  /* Light blue accent for hovers */
-  --container-w: 1280px;
-  --gap: 32px;
-  --font-main: "Inter", system-ui, -apple-system, sans-serif;
-  --font-brand: "Jaini", serif;
-  /* Kept original brand font */
+  --footer-bg: #0f172a;
+  /* Slate 900 */
+  --footer-text: #94a3b8;
+  /* Slate 400 */
+  --footer-heading: #f8fafc;
+  /* Slate 50 */
+  --footer-accent: #38bdf8;
+  /* Sky 400 */
+  --footer-border: #1e293b;
+  /* Slate 800 */
 }
 
-/* Base Footer Styles */
 .site-footer {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
-  color: var(--white);
-  font-family: var(--font-main);
-  position: relative;
-  overflow: hidden;
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  padding-top: 64px;
+  border-top: 1px solid var(--footer-border);
+  text-align: left;
+  /* Override global text-align center */
 }
 
-.container {
-  max-width: var(--container-w);
-  margin: 0 auto;
-  padding: 0 24px;
-  box-sizing: border-box;
-}
-
-/* Layout - Mobile First */
 .footer-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  padding: 64px 0 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  /* Default desktop layout */
+  gap: 64px;
 }
 
-/* 1. Contact / Brand Section */
+/* 1. Left Column: Brand & Contact */
 .footer-left {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
+  align-items: flex-start;
+  /* Ensure left alignment */
 }
 
 .brand-name {
-  font-family: var(--font-brand);
-  font-size: 48px;
-  line-height: 1;
-  color: var(--white);
+  font-size: 36px;
+  /* Significantly increased from 24px */
+  font-weight: 800;
+  color: var(--footer-heading);
+  letter-spacing: -1px;
   margin-bottom: 8px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  /* Optional: Add gradient if appealing means style */
+  background: linear-gradient(90deg, #f8fafc 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .contact-block {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.contact-line {
-  display: flex;
-  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .contact-label {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  color: var(--white);
+  color: var(--footer-heading);
 }
 
 .contact-sub {
   font-size: 14px;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
   margin-top: 4px;
+  line-height: 1.5;
 }
 
 .contact-row {
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  margin-top: 8px;
+  /* Increased gap for better icon spacing */
 }
 
 .contact-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  /* Circular icons look more modern */
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.contact-row:hover .contact-icon {
-  background: var(--accent);
-  color: var(--navy-dark);
-  transform: translateY(-2px);
+  font-size: 20px;
+  margin-top: 0;
+  color: var(--footer-accent);
 }
 
 .contact-meta {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: flex-start;
 }
 
 .contact-key {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  opacity: 0.7;
 }
 
 .contact-value {
   font-size: 15px;
-  color: var(--white);
-  line-height: 1.5;
+  color: var(--footer-heading);
 }
 
-/* 2. Quick Links Section */
+/* 2. Middle Column: Links */
 .footer-middle {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* Left align on mobile */
+  /* Force left align */
 }
 
 .col-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--footer-heading);
   margin-bottom: 24px;
-  position: relative;
-  display: inline-block;
-}
-
-.col-title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 40px;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 2px;
 }
 
 .quicklinks {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .footer-link {
-  color: var(--text-muted);
+  color: var(--footer-text);
   text-decoration: none;
-  font-size: 16px;
-  transition: all 0.2s ease;
-  position: relative;
-  padding-left: 0;
+  font-size: 14px;
+  transition: all 0.2s;
 }
 
 .footer-link:hover {
-  color: var(--white);
-  padding-left: 8px;
-  /* Subtle slide effect */
+  color: var(--footer-accent);
+  transform: translateX(4px);
 }
 
-/* 3. Social Media Section */
+/* 3. Right Column: Social */
 .footer-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* Left align on mobile */
+  /* Force left align */
 }
 
 .social-list {
   display: flex;
   flex-direction: column;
-  /* Stacked items with labels */
   gap: 16px;
+  width: 100%;
+  /* Ensure full width for hover effects if needed */
 }
 
 .social-item {
@@ -193,60 +165,60 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: var(--text-muted);
+  color: var(--footer-text);
+  padding: 8px 0;
   transition: color 0.2s;
+  width: 100%;
+  /* Interactive area */
 }
 
 .social-item:hover {
-  color: var(--white);
+  color: var(--footer-heading);
 }
 
 .social-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
+  background-color: var(--footer-border);
+  border-radius: 50%;
+  transition: all 0.2s;
 }
 
-.social-icon svg path {
-  fill: var(--white);
-  transition: fill 0.3s;
+.social-icon svg {
+  fill: currentColor;
+  width: 16px;
+  height: 16px;
 }
 
 .social-item:hover .social-icon {
-  background: var(--white);
-  transform: scale(1.05);
-}
-
-.social-item:hover .social-icon svg path {
-  fill: var(--navy);
+  background-color: var(--footer-accent);
+  color: var(--footer-bg);
 }
 
 .social-label {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 /* Footer Bottom */
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.2);
-  /* Slightly darker bottom bar */
+  border-top: 1px solid var(--footer-border);
+  background-color: #020617;
+  /* Very dark slate */
   padding: 24px 0;
 }
 
 .footer-bottom-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  font-size: 14px;
-  color: var(--text-muted);
+  font-size: 13px;
 }
 
 .small-links {
@@ -255,59 +227,47 @@
 }
 
 .small-links a {
-  color: var(--text-muted);
+  color: var(--footer-text);
   text-decoration: none;
-  transition: color 0.2s;
 }
 
 .small-links a:hover {
-  color: var(--white);
-  text-decoration: underline;
+  color: var(--footer-accent);
 }
 
-/* DESKTOP STYLES (min-width: 1024px) */
-@media (min-width: 1024px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
   .footer-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 80px 0 48px;
+    grid-template-columns: 1fr 1fr;
+    /* Logo/Contact takes full row? Or 2 cols */
+    gap: 48px;
   }
 
-  /* Left Column */
   .footer-left {
-    flex: 0 0 45%;
-    /* Wider column for contact info */
-    align-items: flex-start;
-    text-align: left;
+    grid-column: 1 / -1;
+    /* Full width top */
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
   }
 
   .brand-name {
-    font-size: 80px;
+    font-size: 20px;
   }
 
   .contact-label {
-    font-size: 24px;
-    text-align: left;
+    font-size: 16px;
   }
 
-  /* Middle Column */
-  .footer-middle {
-    flex: 0 0 25%;
-    align-items: flex-start;
-    padding-left: 40px;
-    /* Separation */
-  }
-
-  /* Right Column */
-  .footer-right {
-    flex: 0 0 20%;
-    align-items: flex-start;
-  }
-
-  /* Footer Bottom */
   .footer-bottom-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
   }
 }

@@ -27,13 +27,17 @@ import PatientPayment from './components/Patient/PatientPayment';
 import PatientNotifications from './components/Patient/PatientNotifications';
 import TestCompletion from './components/Questions/TestCompletion';
 import AdminPayments from './components/admin-panel/AdminPayments';
+import Settings from './components/admin-panel/Settings';
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isDashboardRoute = location.pathname === '/dashboard' || location.pathname === '/patients';
   const isQuestionRoute = location.pathname.startsWith('/questions');
-  const shouldHideNavbarFooter = isAdminRoute || isDashboardRoute || isQuestionRoute;
+  const isAuthRoute = location.pathname === '/login' || location.pathname === '/admin-login' || location.pathname === '/signin';
+  const isPatientRoute = location.pathname.startsWith('/patient') || location.pathname === '/patient-profile';
+  // Added patient profile explicitly since it's outside /patient prefix often
+  const shouldHideNavbarFooter = isAdminRoute || isDashboardRoute || isQuestionRoute || isAuthRoute || isPatientRoute;
 
   // Scroll to top on route change
   useEffect(() => {
@@ -59,6 +63,7 @@ function App() {
           <Route path="/admin/patient-details" element={<PatientDetails />} />
           <Route path="/admin/add-qa" element={<AddQA />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
+          <Route path="/admin/settings" element={<Settings />} />
           <Route path="/patient-profile" element={<PatientProfile />} />
           <Route path="/patient/dashboard" element={<PatientDashboard />} />
           <Route path="/patient/video" element={<PatientVideo />} />

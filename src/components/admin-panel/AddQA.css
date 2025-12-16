@@ -1,5 +1,3 @@
-
-
 .add-qa-container {
     width: 100%;
     overflow-x: hidden;
@@ -13,13 +11,14 @@
 
 
 @media (min-width: 1024px) {
-    .add-qa-container > div.flex-1 {
-        margin-left: 16rem; /* sidebar width */
+    .add-qa-container>div.flex-1 {
+        margin-left: 16rem;
+        /* sidebar width */
     }
 }
 
 @media (max-width: 1023px) {
-    .add-qa-container > div.flex-1 {
+    .add-qa-container>div.flex-1 {
         margin-left: 0;
         padding: 1.25rem;
     }
@@ -34,22 +33,50 @@ button:focus-visible {
 }
 
 
-.toggle-checkbox {
-    appearance: none;
-    background-color: #ffffff;
-    border-radius: 9999px;
+/* Toggle Button Redesign */
+.toggle-wrapper {
+    position: relative;
+    width: 60px;
+    height: 32px;
 }
 
-.toggle-checkbox:checked {
-    transform: translateX(1.5rem);
+.toggle-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: #e5e7eb;
+    transition: .4s;
+    border-radius: 34px;
 }
 
-.peer:checked ~ .toggle-label {
+.toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-checkbox:checked+.toggle-label {
     background-color: #fcd34d;
+}
+
+.toggle-checkbox:checked+.toggle-label:before {
+    transform: translateX(28px);
 }
 
 
@@ -69,7 +96,7 @@ button:focus-visible {
 
 
 
-.qa-card .grid > div {
+.qa-card .grid>div {
     line-height: 1.6;
 }
 

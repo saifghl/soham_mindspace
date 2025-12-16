@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </section>
 
-      
+
       <DrProfile />
       <OurExpertise />
       <TestimonialSection />
@@ -78,7 +78,7 @@ export default function Home() {
         </div>
 
         <div className="memories-cta">
-          <button className="btn btn-outline" >
+          <button className="btn btn-outline" onClick={() => navigate("/gallery")}>
             View All
           </button>
         </div>
