@@ -29,9 +29,8 @@ function Navbar() {
           {navItems.map((item) => (
             <button
               key={item.href}
-              className={`nav-link ${
-                location.pathname === item.href ? "active" : ""
-              }`}
+              className={`nav-link ${location.pathname === item.href ? "active" : ""
+                }`}
               onClick={() => navigate(item.href)}
             >
               {item.label}
@@ -42,7 +41,7 @@ function Navbar() {
             <button className="btn-outline" onClick={() => navigate("/login")}>
               Login
             </button>
-            <button className="btn-primary" onClick={() => navigate("/AdminLogin")}>
+            <button className="btn-primary" onClick={() => navigate("/admin-login")}>
               Admin Login
             </button>
           </div>
@@ -53,7 +52,7 @@ function Navbar() {
           <button className="btn-outline-sm" onClick={() => navigate("/login")}>
             Login
           </button>
-          <button className="btn-primary-sm" onClick={() => navigate("/AdminLogin")}>
+          <button className="btn-primary-sm" onClick={() => navigate("/admin-login")}>
             Admin
           </button>
 

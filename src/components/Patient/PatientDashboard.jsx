@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     Calendar,
     ChevronRight,
@@ -9,6 +10,7 @@ import {
 import './PatientDashboard.css';
 
 const PatientDashboard = () => {
+    const navigate = useNavigate();
     const [habits, setHabits] = useState([
         { id: 1, name: '10min of meditation', completed: false },
         { id: 2, name: 'Go to Dental Walk', completed: false },
@@ -36,7 +38,7 @@ const PatientDashboard = () => {
                         <button className="icon-btn">
                             <Search size={24} />
                         </button>
-                        <button className="icon-btn">
+                        <button className="icon-btn" onClick={() => navigate('/patient/notifications')}>
                             <Bell size={24} />
                             <span className="notification-dot"></span>
                         </button>
@@ -178,7 +180,7 @@ const PatientDashboard = () => {
                             <h3 className="card-title" style={{ marginBottom: '1rem' }}>Healing Videos</h3>
                             <div className="videos-grid">
                                 {[1, 2, 3].map((i) => (
-                                    <div key={i} className="video-thumbnail group">
+                                    <div key={i} className="video-thumbnail group" onClick={() => navigate('/patient/video')}>
                                         <img src={`https://picsum.photos/seed/${i + 100}/400/300`} alt="Video thumbnail" />
                                         <div className="play-button">
                                             <div className="play-icon">

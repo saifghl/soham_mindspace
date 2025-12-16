@@ -9,6 +9,8 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
+import Login from './components/Login';
+import AdminLogin from './components/AdminLogin';
 import SignIn from './components/SignIn';
 import PatientEnq from './components/admin-panel/PatientEnq';
 import AddQA from './components/admin-panel/AddQA';
@@ -20,7 +22,11 @@ import AssessmentIntro from './components/Questions/AssessmentIntro';
 import LanguagePreference from './components/Questions/LanguagePreference';
 import BeginExam from './components/Questions/BeginExam';
 import PatientDashboard from './components/Patient/PatientDashboard';
+import PatientVideo from './components/Patient/PatientVideo';
+import PatientPayment from './components/Patient/PatientPayment';
+import PatientNotifications from './components/Patient/PatientNotifications';
 import TestCompletion from './components/Questions/TestCompletion';
+import AdminPayments from './components/admin-panel/AdminPayments';
 
 function App() {
   const location = useLocation();
@@ -40,7 +46,9 @@ function App() {
       <div className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<SignIn />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/signin" element={<SignIn />} /> {/* Kept if needed, otherwise can remove */}
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
@@ -50,8 +58,12 @@ function App() {
           <Route path="/admin/patients" element={<Patients />} />
           <Route path="/admin/patient-details" element={<PatientDetails />} />
           <Route path="/admin/add-qa" element={<AddQA />} />
+          <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/patient-profile" element={<PatientProfile />} />
           <Route path="/patient/dashboard" element={<PatientDashboard />} />
+          <Route path="/patient/video" element={<PatientVideo />} />
+          <Route path="/patient/payments" element={<PatientPayment />} />
+          <Route path="/patient/notifications" element={<PatientNotifications />} />
           <Route path="/questions/test-completion" element={<TestCompletion />} />
           <Route path="/questions/language-preference" element={<LanguagePreference />} />
           <Route path="/questions/intro" element={<AssessmentIntro />} />
