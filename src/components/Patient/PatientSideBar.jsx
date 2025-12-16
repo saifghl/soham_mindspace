@@ -7,7 +7,8 @@ import {
     CreditCard,
     LogOut,
     Menu,
-    X
+    X,
+    ClipboardList
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ const PatientSideBar = () => {
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/patient/dashboard' },
         { name: 'My Videos', icon: PlayCircle, path: '/patient/video' },
+        { name: 'Take Test', icon: ClipboardList, path: '/questions/intro' },
         { name: 'Payments', icon: CreditCard, path: '/patient/payments' },
         { name: 'Notifications', icon: Bell, path: '/patient/notifications' },
         { name: 'My Profile', icon: User, path: '/patient-profile' }, // Kept original path as per analysis

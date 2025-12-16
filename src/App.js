@@ -28,6 +28,7 @@ import PatientNotifications from './components/Patient/PatientNotifications';
 import TestCompletion from './components/Questions/TestCompletion';
 import AdminPayments from './components/admin-panel/AdminPayments';
 import Settings from './components/admin-panel/Settings';
+import PatientDetailAdmin from './components/admin-panel/PatientDetailAdmin';
 
 function App() {
   const location = useLocation();
@@ -64,6 +65,7 @@ function App() {
           <Route path="/admin/add-qa" element={<AddQA />} />
           <Route path="/admin/payments" element={<AdminPayments />} />
           <Route path="/admin/settings" element={<Settings />} />
+          <Route path="/admin/patient-detail/:id" element={<PatientDetailAdmin />} />
           <Route path="/patient-profile" element={<PatientProfile />} />
           <Route path="/patient/dashboard" element={<PatientDashboard />} />
           <Route path="/patient/video" element={<PatientVideo />} />

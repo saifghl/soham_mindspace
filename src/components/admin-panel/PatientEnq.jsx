@@ -1,5 +1,6 @@
 import React from 'react';
 import SideBar from './SideBar';
+import { Link } from 'react-router-dom';
 
 const PatientEnq = () => {
     const stats = [
@@ -24,7 +25,7 @@ const PatientEnq = () => {
                 <div className="flex justify-between items-start mb-8">
                     <div>
                         <h1 className="text-2xl font-bold text-gray-900 mb-1">Patient Inquiries</h1>
-                        
+
                     </div>
                     <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
                         <img src="https://ui-avatars.com/api/?name=Admin+User" alt="Profile" className="w-full h-full object-cover" />
@@ -58,7 +59,9 @@ const PatientEnq = () => {
                                 {/* Mobile Labels & Data */}
                                 <div className="flex justify-between md:block">
                                     <span className="md:hidden text-gray-500 font-medium">Name:</span>
-                                    <span className="font-semibold md:font-normal">{inquiry.name}</span>
+                                    <Link to={`/admin/patient-detail/${index}`} className="font-semibold md:font-normal text-blue-600 hover:underline">
+                                        {inquiry.name}
+                                    </Link>
                                 </div>
                                 <div className="flex justify-between md:block">
                                     <span className="md:hidden text-gray-500 font-medium">Status:</span>
@@ -90,7 +93,7 @@ const PatientEnq = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
