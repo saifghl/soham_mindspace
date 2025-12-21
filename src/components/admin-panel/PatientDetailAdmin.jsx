@@ -164,7 +164,7 @@ const PatientDetailAdmin = () => {
 
                         {/* Appointments History */}
                         <div className={`transition-opacity duration-300 ${activeTab === 'Appointments' || activeTab === 'Personal & Medical' ? 'block' : 'hidden'}`}>
-
+                          
                             <div className="space-y-4">
                                 {patientData.appointments.map((appt, index) => (
                                     <div key={index} className="bg-white rounded-xl shadow-sm p-6 flex flex-col md:flex-row gap-6 border border-gray-100">

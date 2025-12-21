@@ -1,11 +1,55 @@
 import React, { useState, useEffect } from 'react';
+import { authAPI } from "../services/api";
 
 const ContactUs = () => {
     const [isVisible, setIsVisible] = useState(false);
+     const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+  });
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+
+  //handleChange function will run when patient type enquiry form
+    const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+     ...prev,[name]: value,
+     }));
+  };
+
+  // this function will run when user send submit form
+
+  const handleSubmit = async (e) => {
+  e.preventDefault(); // stop page reload
+ 
+
+  try {
+    await authAPI.create(formData);
+
+    alert("Enquiry sent successfully ✅");
+
+    // reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send enquiry ❌");
+  } 
+};
+
+
+
+
 
     return (
         <div className="w-full bg-white font-sans text-gray-900">
@@ -119,12 +163,16 @@ const ContactUs = () => {
                                 <p className="text-gray-500">Fill out the form below and we'll get back to you shortly.</p>
                             </div>
 
-                            <form className="space-y-6">
+                            <form onSubmit={handleSubmit}  className="space-y-6">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                                     <input
                                         type="text"
                                         placeholder="Enter your full name"
+                                        name="name"
+                                        value={formData.name}
+                                        required
+                                        onChange={handleChange}
                                         className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
                                     />
                                 </div>
@@ -133,6 +181,10 @@ const ContactUs = () => {
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                                     <input
                                         type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        required
+                                        onChange={handleChange}
                                         placeholder="you@example.com"
                                         className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
                                     />
@@ -142,6 +194,10 @@ const ContactUs = () => {
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                                     <input
                                         type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        required
+                                        onChange={handleChange}
                                         placeholder="+91 XXXXX XXXXX"
                                         className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
                                     />
@@ -151,6 +207,10 @@ const ContactUs = () => {
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                                     <textarea
                                         placeholder="How can we help you?"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
                                         rows="4"
                                         className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none resize-y"
                                     ></textarea>

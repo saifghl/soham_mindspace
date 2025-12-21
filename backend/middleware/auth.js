@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
+//chech whether user is authentic or not if it is authentic user then it contains token
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -18,4 +18,15 @@ const authenticateToken = (req, res, next) => {
     });
 };
 
-module.exports = { authenticateToken };
+//check roles (admin,patient)
+const allowRoles = (...roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Forbidden' });
+        }
+        next();
+    };
+};
+
+
+module.exports = { authenticateToken,allowRoles };

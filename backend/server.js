@@ -8,11 +8,11 @@ const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const patientRoutes = require('./routes/patientRoutes');
+const enquiryRoutes = require('./routes/enquiryRoutes')
 
 // Import database
 const pool = require('./config/db');
 
-dotenv.config();
 const app = express();
 
 // Middleware
@@ -35,6 +35,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/patient', patientRoutes);
+app.use('/api/enquiries', enquiryRoutes);
 
 // Basic route
 app.get('/', (req, res) => {

@@ -18,6 +18,7 @@ api.interceptors.request.use((config) => {
 export const authAPI = {
     register: (userData) => api.post('/auth/register', userData),
     login: (credentials) => api.post('/auth/login', credentials),
+    create: (data) => api.post("/enquiries", data)
 };
 
 export default api;
