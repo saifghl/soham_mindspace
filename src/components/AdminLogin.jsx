@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import "./AdminLogin.css";
 import Footer from "./Footer";
+import { authAPI } from "../services/api";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 function AdminLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("doctor@sohammindspace.com");
+  const [password, setPassword] = useState("Admin@123");
+  const navigate=useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Admin login:", { email, password });
-  };
-
+    try{
+       const response = await authAPI.login({ email, password,expectedRole:"admin"});
+       console.log("response",response);
+       if(response.data.token){
+         // Store token and user data
+         localStorage.setItem('token', response.data.token);
+         localStorage.setItem('user', JSON.stringify(response.data.user));
+         //navigate to admin dashboard
+         navigate('/admin/dashboard');
+        }
+       }catch(err){
+          console.log(err.message);
+        }
+    };
+    
   return (
     <div className="admin-page-container">
       {/* Top Branding (Simple Text/Logo) */}
