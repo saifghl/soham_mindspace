@@ -12,6 +12,6 @@ router.post("/", createEnquiry);
 
 // admin
 
-router.get("/", authenticateToken, allowRoles("isAdmin"), getAllEnquiries);
+router.get("/", authenticateToken, allowRoles("admin"), getAllEnquiries);
 
 module.exports = router;

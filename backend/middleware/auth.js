@@ -13,7 +13,9 @@ const authenticateToken = (req, res, next) => {
         if (err) {
             return res.status(403).json({ message: 'Invalid or expired token' });
         }
+        console.log(user);
         req.user = user;
+       
         next();
     });
 };
@@ -21,6 +23,7 @@ const authenticateToken = (req, res, next) => {
 //check roles (admin,patient)
 const allowRoles = (...roles) => {
     return (req, res, next) => {
+        console.log("user role",req.user.role);
         if (!roles.includes(req.user.role)) {
             return res.status(403).json({ message: 'Forbidden' });
         }

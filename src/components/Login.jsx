@@ -23,13 +23,9 @@ function Login() {
       localStorage.setItem('user', JSON.stringify(response.data.user));
       
       // Redirect based on role
-      if (response.data.user.role === 'admin') {
-        navigate('/admin-dashboard');
-      } else if (response.data.user.role === 'doctor') {
-        navigate('/doctor-dashboard');
-      } else {
-        navigate('/patient-dashboard');
-      }
+      if (response.data.user.role === 'patient') {
+        navigate('/patient/dashboard');
+      } 
     } catch (error) {
       alert('Login failed: ' + (error.response?.data?.message || 'Please check your credentials'));
     } finally {
@@ -97,7 +93,6 @@ function Login() {
                 onChange={(e) => setRole(e.target.value)}
               >
                 <option value="patient">Patient</option>
-                <option value="doctor">Doctor</option>
                 <option value="admin">Admin</option>
               </select>
             </div>

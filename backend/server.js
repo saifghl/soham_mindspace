@@ -39,6 +39,8 @@ app.use('/api/patient', patientRoutes);
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/video',videoRoutes);
 
+
+
 // Basic route
 app.get('/', (req, res) => {
     res.json({ message: 'Soham Mindspace API is running!' });

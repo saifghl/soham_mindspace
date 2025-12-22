@@ -26,4 +26,9 @@ export const videoAPI = {
   getAdd: () => api.post('/video'),
 };
 
+// ---------------- ADMIN ----------------
+export const adminAPI = {
+  addPatient: (data) => api.post("/admin/addpatient", data),
+};
+
 export default api;
