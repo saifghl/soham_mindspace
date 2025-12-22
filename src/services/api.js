@@ -21,4 +21,9 @@ export const authAPI = {
     create: (data) => api.post("/enquiries", data)
 };
 
+export const videoAPI = {
+  getAll: () => api.get('/video'),
+  getAdd: () => api.post('/video'),
+};
+
 export default api;

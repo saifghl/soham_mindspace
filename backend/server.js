@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
+require('dotenv').config();
 const path = require('path');
 
 // Import routes
@@ -9,6 +9,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const patientRoutes = require('./routes/patientRoutes');
 const enquiryRoutes = require('./routes/enquiryRoutes')
+const videoRoutes=require('./routes/videoRoutes');
 
 // Import database
 const pool = require('./config/db');
@@ -36,6 +37,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/doctor', doctorRoutes);
 app.use('/api/patient', patientRoutes);
 app.use('/api/enquiries', enquiryRoutes);
+app.use('/api/video',videoRoutes);
 
 // Basic route
 app.get('/', (req, res) => {
