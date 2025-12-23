@@ -7,7 +7,7 @@ const PatientDetailAdmin = () => {
     const navigate = useNavigate();
     const { id } = useParams(); // In a real app, use this ID to fetch data
     const [activeTab, setActiveTab] = useState('Personal & Medical');
-
+     
     // Mock Data - In real app, fetch based on ID
     const patientData = {
         name: 'Chinaza Akachi', // Matching one from the list for demo

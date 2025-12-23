@@ -10,6 +10,7 @@ const doctorRoutes = require('./routes/doctorRoutes');
 const patientRoutes = require('./routes/patientRoutes');
 const enquiryRoutes = require('./routes/enquiryRoutes')
 const videoRoutes=require('./routes/videoRoutes');
+const appointmentRoutes=require("./routes/appointmentRoutes");
 
 // Import database
 const pool = require('./config/db');
@@ -38,7 +39,7 @@ app.use('/api/doctor', doctorRoutes);
 app.use('/api/patient', patientRoutes);
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/video',videoRoutes);
-
+app.use('/api/appointment',appointmentRoutes);
 
 
 // Basic route

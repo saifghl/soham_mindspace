@@ -23,7 +23,7 @@ export const authAPI = {
 
 export const videoAPI = {
   getAll: () => api.get('/video'),
-  getAdd: () => api.post('/video'),
+  getAdd: (data) => api.post('/video',data),
 };
 
 // ---------------- ADMIN ----------------

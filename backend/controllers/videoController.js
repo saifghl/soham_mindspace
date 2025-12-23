@@ -6,8 +6,9 @@ const { extractYouTubeId, fetchYouTubeMeta }=require("../utils/youtube.js");
  const addVideo = async (req, res) => {
   try {
     console.log("add vedio function is running");
+    console.log("body ka content",req.body)
     const { youtube_url } = req.body;
-
+     console.log("youtube ur",youtube_url )
     if (!youtube_url) {
       return res.status(400).json({ message: "YouTube URL is required" });
     }
@@ -29,6 +30,7 @@ const { extractYouTubeId, fetchYouTubeMeta }=require("../utils/youtube.js");
     res.json({ message: "Video added successfully" });
 
   } catch (err) {
+    console.log(err.message);
     res.status(500).json({ error: err.message });
   }
 };

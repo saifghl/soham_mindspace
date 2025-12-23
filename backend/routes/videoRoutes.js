@@ -1,17 +1,16 @@
 const express= require('express');
 const {addVideo,getVideos}=require("../controllers/videoController.js");
-const { authenticateToken } = require('../middleware/auth.js');
+const { authenticateToken, allowRoles } = require('../middleware/auth.js');
 
 const router = express.Router();
 
-// Admin
-// router.post("/videos",authenticateToken,allowRoles("admin"), addVideo);
 
-router.post("/", addVideo);
+// add vedios
+router.post("/",authenticateToken,allowRoles("admin"),addVideo);
 
 
 // Patients
 router.get("/", getVideos);
 
- 
+
 module.exports = router;
