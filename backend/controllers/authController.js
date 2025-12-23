@@ -4,6 +4,7 @@ const pool = require('../config/db');
 
 
 const login = async (req, res) => {
+  console.log("Login fucntion is running");
   const { email, password, expectedRole } = req.body;
   // expectedRole = 'admin' or 'patient'
 

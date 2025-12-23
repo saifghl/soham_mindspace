@@ -16,6 +16,7 @@ function Login() {
     setLoading(true);
     
     try {
+      console.log("Login function is running");
       const response = await authAPI.login({ email, password, role });
       
       // Store token and user data

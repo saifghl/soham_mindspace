@@ -11,16 +11,25 @@ import {
     Menu,
     X
 } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
     const location = useLocation();
     const [expandedMenu, setExpandedMenu] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
+    const navigate=useNavigate();
 
     const toggleSubMenu = (menuName) => {
         setExpandedMenu(expandedMenu === menuName ? null : menuName);
     };
+
+    const logout = () => {
+    console.log("logout function is running");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+     navigate("/login");
+   };
+
 
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
@@ -138,10 +147,13 @@ const SideBar = () => {
                 </nav>
 
                 <div className="p-4 mt-auto">
-                    <button className="flex items-center gap-3 px-4 py-3 text-red-500 text-sm font-medium hover:bg-red-50 rounded-lg w-full transition-colors">
+                    <div
+                    type='button'
+                    onClick={logout}
+                    className="flex items-center gap-3 px-4 py-3 text-red-500 text-sm font-medium hover:bg-red-50 rounded-lg w-full transition-colors">
                         <LogOut size={20} />
                         Log Out
-                    </button>
+                    </div>
                 </div>
             </div>
         </>
