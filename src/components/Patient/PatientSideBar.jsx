@@ -8,7 +8,8 @@ import {
     LogOut,
     Menu,
     X,
-    ClipboardList
+    ClipboardList,
+    Calendar // Added Calendar icon
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ const PatientSideBar = () => {
         { name: 'Take Test', icon: ClipboardList, path: '/questions/intro' },
         { name: 'Payments', icon: CreditCard, path: '/patient/payments' },
         { name: 'Notifications', icon: Bell, path: '/patient/notifications' },
+        { name: 'Book Appointment', icon: Calendar, path: '/patient/book-appointment' }, // New Item
         { name: 'My Profile', icon: User, path: '/patient-profile' }, // Kept original path as per analysis
     ];
 
