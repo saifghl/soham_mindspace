@@ -7,10 +7,7 @@ node_modules/
 .pnp.js
 
 
-# env files
-.env
-.env.*
-backend/.env
+
 
 # testing
 /coverage
